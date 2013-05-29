@@ -8,7 +8,6 @@
 		<meta http-equiv="imagetoolbar" content="no" />
 		<meta content="true" name="MSSmartTagsPreventParsing" />
 		<meta name="apple-mobile-web-app-capable" content="yes" />
-		
 		<meta name="author" content="Wouter van Wijk, Sebastian Sibelle">
 		<meta name="copyright" content="(c) 2012-2013 Wouter van Wijk" />
 
@@ -27,8 +26,10 @@
 		<script src="js/mobile.js"></script>
 	</head>
 	<body>
+		<!-- Page container -->
 		<div data-role="page" data-theme="c" id="page">
 
+			<!-- Cover Popup -->
 			<div id="coverpopup" data-role="popup" data-theme="c">
 				<a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
 				<h3 id="coverpopupalbumname"></h3>
@@ -36,12 +37,14 @@
 				<img id="coverpopupimage" src="" />
 			</div>
 
+			<!-- Artist Popup -->
 			<div id="artistpopup" data-role="popup" data-theme="c">
 				<a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
 				<h4 id="artistpopupname">bbb</h4>
 				<img id="artistpopupimage" src="" />
 			</div>
 
+			<!-- Controls Modal -->
 			<div id="controlsmodal" data-role="popup" data-theme="c">
 				<a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
 				<p id="buttons">
@@ -58,15 +61,12 @@
 				<h4 id="modalartist"></h4>
 				<h4 id="modalalbum"></h4>
 				<img id="controlspopupimage" src="" />
-
 			</div>
 
+			<!-- Tracks Popup -->
 			<div data-role="popup" data-transition="none" data-theme="c" id="popupTracks">
 				<div data-role="collapsible-set">
 					<ul data-role="listview" data-icon="false" id="popupTracksLv">
-						<!-- <li data-role="divider">
-						Track
-						</li> -->
 						<li>
 							<a href="#" onclick="return playTrack();">Play Track <span id="popupTrackName"></span></a>
 						</li>
@@ -88,8 +88,8 @@
 				</div>
 			</div>
 
+			<!-- Header -->
 			<div data-role="header" data-tap-toggle="false" id="header" data-position="fixed" class="ui-grid-b header-breakpoint">
-
 				<div id="controldiv" class="ui-block-a">
 					<span id="btback"><a href="#" onclick="return backbt();"> <img  id="backimg"src="images/icons/arrow_left_alt1_24x24.png" /></a></span>
 					<span id="btprev"><a href="#" onclick="doPrevious(); return false"><img id="previmg" src="images/icons/first_24x24.png" alt="Previous Track" /></a></span>
@@ -97,55 +97,51 @@
 					<span id="btnext"><a href="#" onclick="doNext(); return false"><img id="nextimg" src="images/icons/last_24x24.png" alt="Next Track" /></a></span>
 					<span id="btcontrols"><a href="#controlsmodal" data-position-to="window" data-rel="popup"><img src="images/icons/new_window_24x24.png" id="controlsimg" alt="More controls" class="breakafter" /></a></span>
 				</div>
-
 				<div id="songinfo" class=" ui-block-b">
 					<a href="#controlsmodal" data-position-to="window" data-rel="popup"> 
-						<img id="infocover" src="images/icons/cd_32x32.png" width="36" height="36"></img> <div id="infoname"></div> <div id="infoartist"></div> </a>
+						<img id="infocover" src="images/icons/cd_32x32.png" width="36" height="36"></img> <div id="infoname"></div> <div id="infoartist"></div>
+					</a>
 				</div>
-
 				<div id="slidercontainer" class="ui-block-c">
 					<span id="songelapsed" class="pull-left"> 0:00 </span>
 					<span id="songlength" class="pull-right"> 0:00 </span>
 					<label for="trackslider"  class="ui-hidden-accessible">Position</label>
 					<input id="trackslider" name="trackslider" data-mini="true" type="range" onchange="doSeekPos(this.value);" />
 				</div>
+			</div>
 
-			</div><!-- /header -->
-
+			<!-- Playlist Pane -->
 			<div data-role="content" id="playlistspane" class="pane ui-grid-a pl-breakpoint">
 				<div class="ui-block-a scroll" id="playlistslistdiv">
 					<ul id="playlistslist" class="table"></ul>
 				</div>
 				<div class="ui-block-b scroll" id="playlisttracksdiv">
-					<ul class="table" id="playlisttracks"></ul> 
-<!--                    <ul id="playlisttracks"></ul> -->
-<!--                    <ul data-role="listview" data-theme="c" data-icon="false" id="playlisttracks" data-inset="true"></ul> -->
+					<ul class="table" id="playlisttracks"></ul>
 				</div>
+			</div>
 
-			</div><!--/playlistspane-->
-
+			<!-- Queue Pane -->
 			<div data-role="content" class="pane" id="currentpane">
 				<h4>Play Queue</h4>
-<!--                <ul data-role="listview" data-icon="false" data-theme="d" data-inset="true" id="currenttable"></ul> 
-				<ul data-role="listview" data-icon="false" data-theme="d" data-inset="true" id="currenttable"></ul> -->
 				<ul  class="table" id="currenttable"></ul>
 			</div>
 
+			<!-- Album Pane -->
 			<div data-role="content" class="pane" id="albumspane">
 				<a href="#coverpopup" data-position-to="window" data-rel="popup"><img height="90" src="" id="albumviewcover" /></a>
 				<h3 id="h_albumname"></h3>
 				<h5 id="h_albumartist"></h5>
-<!--                <ul data-role="listview" data-icon="false" data-inset="true" id="albumstable"></ul> -->
 				<ul class="table" id="albumstable"></ul>
 			</div>
 
+			<!-- Artist Pane -->
 			<div data-role="content" class="pane" id="artistspane">
-				<!--                            <h4>Artist</h4> -->
 				<a href="#artistpopup" data-position-to="window" data-rel="popup"><img height="90" src="" id="artistviewimage" /></a>
 				<h3 id="h_artistname"></h3>
 				<ul class="table" id="artiststable"></ul>
 			</div>
 
+			<!-- search -->
 			<div data-role="content" class="pane" id="searchpane">
 				<div class="">
 					<form>
@@ -155,8 +151,6 @@
 					</button>
 					</form>
 				</div>
-
-
 				<div id="searchresults">
 					<div class="ui-grid-a srch-breakpoint">
 						<div class="ui-block-a" id="searchartists">
@@ -168,19 +162,14 @@
 							<ul class="table" id="albumresulttable"></ul>
 						</div>
 					</div>
-					<!-- grid a -->
-
-<!--                    <div class="" style="text-align: center" id="expandsearch">
-						<a href="#" onclick="toggleSearch(); return false;"><img src="images/icons/arrow_down_16x16.png"></a>
-					</div>
--->                    <div class="" id="searchtracks">
+					<div class="" id="searchtracks">
 						<h4>Tracks</h4>
 						<ul id="trackresulttable"  class="table"></ul>
 					</div>
 				</div>
 			</div>
-			<!-- search div -->
 
+			<!-- Footer -->
 			<div data-role="footer" data-tap-toggle="false" data-position="fixed">
 				<div data-role="navbar" data-iconpos="left">
 					<ul>
@@ -196,27 +185,24 @@
 					</ul>
 				</div><!-- /navbar -->
 			</div><!-- /footer -->
-		</div>
-		<!-- content -->
 		</div><!-- /page one -->
+
+		<!-- Javscripts -->
 		<script type="text/javascript" src="/mopidy/mopidy.js"></script>
 		<script type="text/javascript" src="js/iscroll-lite.js"></script>
-<!--        <script type="text/javascript" src="js/jquery.mobile.iscrollview-closure-min.js"></script> -->  
-
 		<script src="js/jquery.truncate.min.js"></script>
-<!--        <script type="text/javascript" src="js/add2home.js" charset="utf-8"></script> -->
 		<script src="js/controls.js"></script>
 		<script src="js/library.js"></script>
 		<script src="js/functionsvars.js"></script>
 		<script src="js/process_ws.js"></script>
 
-		<!-- use lastfm -->
+		<!-- Use lastfm -->
 		<script type="text/javascript" src="js/lastfm.api.md5.js"></script>
 		<script type="text/javascript" src="js/lastfm.api.js"></script>
 		<script type="text/javascript" src="js/lastfm.api.cache.js"></script>
-
 		<script src="js/lastfm.js"></script>
 
+		<!-- GUI -->
 		<script src="js/gui.js"></script>
 	</body>
 </html>
