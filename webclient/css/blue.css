@@ -1,0 +1,403 @@
+body {
+	font-family: sans-serif;
+	color: #777;
+}
+
+/* Add transition to containers so they can push in and out */
+#layout, #menu, .pure-menu-link {
+	-webkit-transition: all 0.2s ease-out;
+	-moz-transition: all 0.2s ease-out;
+	-ms-transition: all 0.2s ease-out;
+	-o-transition: all 0.2s ease-out;
+	transition: all 0.2s ease-out;
+}
+
+/* --------------------------
+ * Element Styles
+ * --------------------------
+*/
+
+
+h1,h2,h3,h4,h5,h6 {
+	font-weight: bold;
+	color: rgb(75, 75, 75);
+}
+
+a {
+	color: #3b8bba; /* block-background-text-normal */
+	text-decoration: none;
+	font-weight: normal;
+	letter-spacing: 1px;
+}
+
+a:visited {
+	color: #265778; /* block-normal-text-normal */
+}
+
+dt {
+	font-weight: bold;
+}
+dd {
+	margin: 0 0 10px 0;
+}
+
+/* --------------------------
+ * Layout Styles
+ * --------------------------
+*/
+
+#layout {
+	padding-left: 190px; /* left col width "#menu" */
+	left: 0;
+}
+
+#main {
+	width: 100%;
+}
+
+
+/* Apply the .box class on the immediate parent of any grid element (pure-u-*) to apply some padding. */
+.l-box {
+	padding: 1.3em;
+}
+
+.l-vbox {
+	padding: 1.3em 0;
+}
+
+.l-hbox {
+	padding: 0 1.3em;
+}
+
+.l-centered {
+	text-align: center;
+}
+
+
+/* --------------------------
+ * Header Module Styles
+ * --------------------------
+*/
+.header {
+	 min-height: 80px;
+	 margin: 0;
+	 color: #333;
+	 padding: 1em;
+	 text-align: center;
+	 border-bottom: 1px solid #eee;
+	 background: #fff;
+ }
+	.header h1 {
+		margin: 0.2em 0;
+		font-size: 3em;
+		font-weight: 300;
+	}
+	 .header h2 {
+		 font-weight: 300;
+		 margin: 0;
+		 color: #ccc;
+	 }
+
+aside {
+	background: #cce1ef; /* normal color palette when primary color palette is at #1f8dd6 */
+	padding: 0.3em 1em;
+	border-radius: 3px;
+	color: #163246; /* block-normal-text-high */
+}
+	.aside a, .aside a:visited {
+		color: #1f8dd6;
+	}
+
+ /* --------------------------
+  * Content Module Styles
+  * --------------------------
+ */
+
+/* The content div is placed as a wrapper around all the docs */
+.content {
+	margin: 0 auto;
+	width: 70%;
+	margin-bottom:50px;
+}
+	.content p {
+		line-height: 1.6em;
+		font-size: 115%;
+	}
+
+	.content .content-subhead {
+		margin: 50px 0 20px 0;
+		font-weight: 300;
+		color: #888;
+	}
+
+	.content .content-spaced {
+		line-height: 1.8em;
+	}
+
+	/* A code snippet that has been syntax highlighted */
+	.content .snippet {
+		margin: 1.3em 0 1em;
+		padding: 1.3em;
+	}
+
+	.content .content-quote {
+		font-family: "Georgia", serif;
+		color: #666;
+		font-style: italic;
+		line-height: 1.8em;
+		border-left: 5px solid #ddd;
+		padding-left: 1.5em;
+	}
+
+/* --------------------------
+ * Main Navigation Bar Styles
+ * --------------------------
+*/
+
+#menu {
+	margin-left: -190px; /* "#menu" width */
+	width: 190px;
+	position: fixed;
+	top: 0;
+	left: 190px;
+	bottom: 0;
+	z-index: 1000; /* so the menu or its navicon stays above all content */
+	background: #141619;
+	overflow-y: auto;
+	-webkit-overflow-scroll: touch;
+}
+#menu a {
+	font-size:80%;
+	color: #fff;
+	border: none;
+	white-space: normal;
+	padding-left: 25px;
+	font-weight: 100;
+}
+
+#menu .pure-menu-open {
+	background: transparent;
+	border: 0;
+}
+
+#menu .pure-menu ul {
+	border: none;
+	background: transparent;
+	margin-top: 30px;
+}
+
+#menu .pure-menu .menu-item-divided {
+	padding-top: 20px;
+	margin-top: 20px;
+	border-top: 1px solid #333;
+}
+
+#menu .pure-menu li a:hover {
+	background: #141619;
+	color: #4EB9EF;
+}
+
+.pure-menu-link {
+	display: none; /* show this only on small screens */
+	top: 0;
+	left: 190px; /* "#menu width" */
+	background: #000;
+	background: rgba(0,0,0,0.7);
+	padding: 0.75em 1em;
+}
+
+.pure-menu-link:hover {
+	background: #000;
+}
+
+#menu .pure-menu-heading {
+	font-size:110%;
+	color: #fff;
+}
+
+#menu .pure-menu-selected {
+	background: #1f8dd6;
+}
+
+#menu .pure-menu-selected a {
+	color: white;
+}
+
+#menu li.pure-menu-selected a:hover {
+	background: none;
+}
+
+#menu .menu-item-top a{
+	font-weight: 400;
+}
+
+/* --------------
+ * Player Styles
+ * ---------------
+ */
+
+#player{
+	position: fixed;
+	bottom: 0;
+	background: #111;
+	opacity: 0.97;
+	width: 100%;
+	padding: 25px;
+	z-index: 1000;
+	left: 0px;
+}
+
+#player .songinfo .albumcover{
+	width: 60px;
+	height: 60px;
+	background: #333;
+	border-radius: 3px;
+	display: inline;
+	float: left;
+}
+
+#player .songinfo .albumcover img{
+	border-radius: 3px;
+}
+
+#player .songinfo .separator,
+#player .songinfo .songname,
+#player .songinfo .artistname{
+	display: inline;
+	float: left;
+}
+
+#player .songinfo .songname{
+	margin-left: 20px;
+}
+
+#player .songinfo .songname a{
+	color: #fff;
+	font-size: 75%;
+	display: inline;
+	float: left;
+	letter-spacing: 1px;
+}
+
+#player .songinfo .artistname a{
+	color: #aaa;
+	font-size: 75%;
+	display: inline;
+	float: left;
+	letter-spacing: 1px;
+}
+
+#player .songinfo .artistname a:hover,
+#player .songinfo .songname a:hover {
+	color: #4EB9EF;
+	cursor: pointer;
+}
+
+#player .songinfo .separator{
+	color: #aaa;
+	padding:0px 10px;
+	line-height: 90%
+}
+
+#player .controls{
+	margin-left: 60px;
+	margin-top: 25px;
+}
+
+#player .controls span{
+	display: inline;
+	float: left;
+	padding-left: 20px;
+}
+
+#player .controls span.previous,
+#player .controls span.next{
+	padding-top: 4px;
+}
+
+/* --------------------------
+ * Responsive Styles
+ * --------------------------
+*/
+
+@media (max-width: 870px) {
+
+	/* Navigation Push Styles */
+	#layout {
+		position: relative;
+		padding-left: 0;
+	}
+		#layout.active {
+			position: relative;
+			left: 190px;
+		}
+
+			#layout.active #menu {
+				left: 190px;
+				width: 190px;
+			}
+
+	#menu {
+		left: 0;
+	}
+
+	.pure-menu-link {
+		position: fixed;
+		left: 0;
+		display: block;
+	}
+
+	#layout.active .pure-menu-link {
+		left: 190px;
+	}
+}
+
+@media (max-width: 767px) {
+
+	.content {
+		width: 95%;
+		font-size: 90%;
+	}
+
+	.legal-links {
+		padding:1em 0;
+	}
+	.legal-license, .legal-copyright, .legal-links, .legal-links li {
+		text-align: center;
+	}
+
+	/* normalize paddings on small screens*/
+	.l-hbox {
+		padding: 1.3em;
+	}
+}
+
+p {
+	line-height: 1.6em;
+}
+
+@media (max-width: 767px) {
+	.hero {
+		margin: 2em 0 1.5em;
+		padding: 0.6em;
+	}
+		.hero h1 {
+			font-size: 250%;
+			font-weight: 300; /* slightly thicker to compensate for font-size */
+		}
+		.hero h2 {
+			font-size: 165%;
+		}
+
+	/* by default l-hbox becomes padding: 1.3em; at <= 767px. However, this makes the heading
+	too far away from the content, so adding this in here. */
+	h3.l-hbox,
+	p.l-hbox {
+		padding: 0 1.3em;
+	}
+
+	a.size-chart-label {
+		font-size: 0.75em;
+		padding: 0.6667em;
+	}
+}

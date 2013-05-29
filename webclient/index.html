@@ -15,46 +15,85 @@
 		<link rel="apple-touch-icon" href="/mopidy/favicon.png" />
 
 		<!-- CSS -->
-		<link rel="stylesheet" href="css/jquery.mobile-1.3.0.css" />
-		<link href="css/ws.css" rel="stylesheet">
-		<link href="css/jquery.mobile.iscrollview.css" rel="stylesheet">
+		<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.1.0/pure-min.css">
+		<link href="css/blue.css" rel="stylesheet">
+		<link href="css/application.css" rel="stylesheet">
 	</head>
 	<body>
-		<!-- Page container -->
-		<div data-role="page" data-theme="c" id="page">
+		<!-- Page Container -->
+		<div id="layout" class="pure-g-r" data-role="page" data-theme="c" >
 
-			<!-- Cover Popup -->
-			<div id="coverpopup" data-role="popup" data-theme="c">
-				<a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
-				<h3 id="coverpopupalbumname"></h3>
-				<h4 id="coverpopupartist"></h4>
-				<img id="coverpopupimage" src="" />
-			</div>
+			<!-- Page Nav Mobile-->
+			<a id="menuLink" href="#menu" class="pure-menu-link">
+				<img src="images/navicon-png2x.png" width="20" alt="Menu toggle">
+			</a>
 
-			<!-- Artist Popup -->
-			<div id="artistpopup" data-role="popup" data-theme="c">
-				<a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
-				<h4 id="artistpopupname">bbb</h4>
-				<img id="artistpopupimage" src="" />
-			</div>
-
-			<!-- Controls Modal -->
-			<div id="controlsmodal" data-role="popup" data-theme="c">
-				<a href="#" data-rel="back" data-role="button" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
-				<p id="buttons">
-					<a href="#" onclick="doRandom(); return false"><img src="images/icons/loop_alt2_16x14.png" alt="" id="randombt" /></a>
-					&nbsp; <a href="#" onclick="doRepeat(); return false"><img src="images/icons/reload_12x14.png" id="repeatbt" alt="" /></a>
-					&nbsp; <a href="#" onclick="doShuffle(); return false" title="Shuffle"><img src="images/icons/fork_21x24.png" id="shufflebt" alt="" /></a>
-				</p>
-				<div>
-					<a href="#" onclick="doMute(); return false;"><img id="mutebt" src="images/icons/volume_16x12.png" alt="" /></a>
-					<label for="volumeslider" class="ui-hidden-accessible">Volume</label>
-					<input id="volumeslider" name="volumeslider" data-mini="true" type="range" min="0" value="0" max="100" onchange="doVolume(this.value);" />
+			<!-- Page Nav-->
+			<div id="menu" class="pure-u"  data-tap-toggle="false" data-position="fixed">
+				<div class="pure-menu pure-menu-open pure-menu-custom" data-role="navbar" data-iconpos="left">
+					<!-- <a href="#nav" class="pure-menu-heading">Yumi</a> -->
+					<ul>
+						<li class="menu-item-top"><a href="#search" onclick="switchContent('search' ); return false;">Search</a></li>
+						<!-- <li><a href="#">Radio</a></li> -->
+						<li class="menu-item-top"><a href="#current" onclick="switchContent('current' ); return false;">Queue</a></li>
+						<!-- <li class="pure-menu-heading"><a href="#playlists" onclick="switchContent('playlists' ); return false;">Playlists</a></li> -->
+						<li class="menu-item-divided"><a href="#">Coding Times</a></li>
+						<li><a href="#">Bass Times</a></li>
+						<li><a href="#">Checkout Times</a></li>
+						<li><a href="#">Lo-fi Times</a></li>
+						<li><a href="#">Acid Times</a></li>
+					</ul>
 				</div>
-				<h3 id="modalname"></h3>
-				<h4 id="modalartist"></h4>
-				<h4 id="modalalbum"></h4>
-				<img id="controlspopupimage" src="" />
+			</div>
+
+			<!-- Play Controls -->
+			<div id="player" data-role="header" data-tap-toggle="false" data-position="fixed">
+				<div id="songinfo" class="pure-g-r songinfo">
+					<a href="#controlsmodal" data-position-to="window" data-rel="popup"> 
+						<div id="infocoverdiv" class="albumcover"><img id="infocover" src="images/james-blake.png" width="60" height="60"></img></div>
+						<div class="songname"><a href="#">The Wilhelm Scream</a></div>
+						<div class="separator">-</div>
+						<div class="artistname"><a href="#">James Blake</a></div>
+					</a>
+				</div>
+
+				<!-- Play pause volume -->
+				<div id="controlsdiv" class="pure-g-r controls">
+					<!-- <span id="btback">
+						<a href="#" onclick="return backbt();"><img  id="backimg"src="images/icons/arrow_left_alt1_24x24.png" /></a>
+					</span> -->
+					<span id="btprev" class="previous">
+						<a href="#" onclick="doPrevious(); return false"><img id="previmg" src="images/icons/first_24x24.png" alt="Previous Track" /></a>
+					</span>
+					<span id="btplay" class="play">
+						<a href="#" onclick="doPlay(); return false"><img src="images/icons/pause_32x32.png" alt="Play" id="playimg" /></a>
+					</span>
+					<span id="btnext" class="next">
+						<a href="#" onclick="doNext(); return false"><img id="nextimg" src="images/icons/last_24x24.png" alt="Next Track" /></a>
+					</span>
+					<span class="volume">
+						<a href="#" onclick="doMute(); return false;"><img id="mutebt" src="images/icons/volume_16x12.png" alt="" /></a>
+						<label for="volumeslider">Volume</label>
+						<!-- <input id="volumeslider" name="volumeslider" data-mini="true" type="range" min="0" value="0" max="100" onchange="doVolume(this.value);" /> -->
+					</span>
+				</div>
+
+				<!-- Scrubbing slider -->
+				<div id="slidercontainer" class="pure-u">
+					<span id="songelapsed" class="pull-left"> 0:00 </span>
+					<span id="songlength" class="pull-right"> 0:00 </span>
+					<!-- <label for="trackslider"  class="ui-hidden-accessible">Position</label> -->
+					<!-- <input id="trackslider" name="trackslider" data-mini="true" type="range" onchange="doSeekPos(this.value);" /> -->
+				</div>
+
+				<!-- Extra Controls -->
+				<div id="extra roles" class="pure-u">
+					<p id="buttons">
+						<a href="#" onclick="doShuffle(); return false" title="Shuffle"><img src="images/icons/fork_21x24.png" id="shufflebt" alt="" /></a>
+						&nbsp; <a href="#" onclick="doRepeat(); return false"><img src="images/icons/loop_alt2_16x14.png" id="repeatbt" alt="" /></a>
+						<!-- &nbsp;<a href="#" onclick="doRandom(); return false"><img src="images/icons/loop_alt2_16x14.png" alt="" id="randombt" /></a> -->
+					</p>
+				</div>
 			</div>
 
 			<!-- Tracks Popup -->
@@ -82,30 +121,9 @@
 				</div>
 			</div>
 
-			<!-- Header -->
-			<div data-role="header" data-tap-toggle="false" id="header" data-position="fixed" class="ui-grid-b header-breakpoint">
-				<div id="controldiv" class="ui-block-a">
-					<span id="btback"><a href="#" onclick="return backbt();"> <img  id="backimg"src="images/icons/arrow_left_alt1_24x24.png" /></a></span>
-					<span id="btprev"><a href="#" onclick="doPrevious(); return false"><img id="previmg" src="images/icons/first_24x24.png" alt="Previous Track" /></a></span>
-					<span id="btplay"><a href="#" onclick="doPlay(); return false"><img src="images/icons/pause_32x32.png" alt="Play" id="playimg" /></a></span>
-					<span id="btnext"><a href="#" onclick="doNext(); return false"><img id="nextimg" src="images/icons/last_24x24.png" alt="Next Track" /></a></span>
-					<span id="btcontrols"><a href="#controlsmodal" data-position-to="window" data-rel="popup"><img src="images/icons/new_window_24x24.png" id="controlsimg" alt="More controls" class="breakafter" /></a></span>
-				</div>
-				<div id="songinfo" class=" ui-block-b">
-					<a href="#controlsmodal" data-position-to="window" data-rel="popup"> 
-						<img id="infocover" src="images/icons/cd_32x32.png" width="36" height="36"></img> <div id="infoname"></div> <div id="infoartist"></div>
-					</a>
-				</div>
-				<div id="slidercontainer" class="ui-block-c">
-					<span id="songelapsed" class="pull-left"> 0:00 </span>
-					<span id="songlength" class="pull-right"> 0:00 </span>
-					<label for="trackslider"  class="ui-hidden-accessible">Position</label>
-					<input id="trackslider" name="trackslider" data-mini="true" type="range" onchange="doSeekPos(this.value);" />
-				</div>
-			</div>
-
 			<!-- Playlist Pane -->
-			<div data-role="content" id="playlistspane" class="pane ui-grid-a pl-breakpoint">
+			<div data-role="content" id="playlistspane" class="pane pure-u content">
+				<h4>Playlists</h4>
 				<div class="ui-block-a scroll" id="playlistslistdiv">
 					<ul id="playlistslist" class="table"></ul>
 				</div>
@@ -115,13 +133,14 @@
 			</div>
 
 			<!-- Queue Pane -->
-			<div data-role="content" class="pane" id="currentpane">
-				<h4>Play Queue</h4>
+			<div data-role="content" id="currentpane" class="pane pure-u content">
+				<h4>Queue</h4>
 				<ul  class="table" id="currenttable"></ul>
 			</div>
 
 			<!-- Album Pane -->
-			<div data-role="content" class="pane" id="albumspane">
+			<div data-role="content" id="albumspane" class="pane pure-u content">
+				<h4>Album</h4>
 				<a href="#coverpopup" data-position-to="window" data-rel="popup"><img height="90" src="" id="albumviewcover" /></a>
 				<h3 id="h_albumname"></h3>
 				<h5 id="h_albumartist"></h5>
@@ -129,15 +148,16 @@
 			</div>
 
 			<!-- Artist Pane -->
-			<div data-role="content" class="pane" id="artistspane">
+			<div data-role="content" id="artistspane" class="pane pure-u content">
+				<h4>Artist</h4>
 				<a href="#artistpopup" data-position-to="window" data-rel="popup"><img height="90" src="" id="artistviewimage" /></a>
 				<h3 id="h_artistname"></h3>
 				<ul class="table" id="artiststable"></ul>
 			</div>
 
-			<!-- search -->
-			<div data-role="content" class="pane" id="searchpane">
-				<div class="">
+			<!-- Search -->
+			<div data-role="content" id="searchpane" class="pane pure-u content" >
+				<div>
 					<form>
 					<input id="searchinput" class="span2" data-clear-btn="true" onkeypress="return searchPressed(event.keyCode);" id="appendedInputButton" type="text" />
 					<button class="btn" type="button" onclick="return initSearch(event.value);" >
@@ -162,27 +182,11 @@
 					</div>
 				</div>
 			</div>
-
-			<!-- Footer -->
-			<div data-role="footer" data-tap-toggle="false" data-position="fixed">
-				<div data-role="navbar" data-iconpos="left">
-					<ul>
-						<li id="navplaylists">
-							<a href="#playlists" onclick="switchContent('playlists' ); return false;"><img src="images/icons/list_nested_24x21.png" /> Playlists </a>
-						</li>
-						<li id="navcurrent">
-							<a href="#current" onclick="switchContent('current' ); return false;"><img src="images/icons/list_24x21.png" /> Queue </a>
-						</li>
-						<li id="navsearch">
-							<a href="#search" onclick="switchContent('search' ); return false;"  ><img src="images/icons/magnifying_glass_24x24.png" /> Search </a>
-						</li>
-					</ul>
-				</div><!-- /navbar -->
-			</div><!-- /footer -->
-		</div><!-- /page one -->
+		</div>
 
 		<!-- Javscripts -->
 		<script src="js/jquery-1.8.3.js"></script>
+		<script src="vendor/rainbow/rainbow.js"></script>
 		<script type='application/javascript' src='js/fastclick.js'></script> 
 		<script src="js/jquery.mobile-1.3.0.js"></script>
 		<script src="js/mobile.js"></script>
