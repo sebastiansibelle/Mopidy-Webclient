@@ -12,7 +12,7 @@
 		<meta name="copyright" content="(c) 2012-2013 Wouter van Wijk" />
 
 		<!-- Favicon -->
-		<link rel="apple-touch-icon" href="/mopidy/favicon.png" />
+		<!-- <link rel="apple-touch-icon" href="/mopidy/favicon.png" /> -->
 
 		<!-- CSS -->
 		<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.1.0/pure-min.css">
@@ -21,189 +21,238 @@
 	</head>
 	<body>
 		<!-- Page Container -->
-		<div id="layout" class="pure-g-r" data-role="page" data-theme="c" >
+		<div id="layout" class="pure-g-r">
 
-			<!-- Page Nav Mobile-->
-			<a id="menuLink" href="#menu" class="pure-menu-link">
-				<img src="images/navicon-png2x.png" width="20" alt="Menu toggle">
-			</a>
+			<!-- Page Navigation -->
+			<div class="pure-u page-nav">
+				<!-- Page Nav Mobile-->
+				<a href="#menu" class="pure-menu-link">
+					<img src="images/navicon-png2x.png" width="20" alt="Menu Toggle">
+				</a>
 
-			<!-- Page Nav-->
-			<div id="menu" class="pure-u"  data-tap-toggle="false" data-position="fixed">
-				<div class="pure-menu pure-menu-open pure-menu-custom" data-role="navbar" data-iconpos="left">
-					<!-- <a href="#nav" class="pure-menu-heading">Yumi</a> -->
-					<ul>
-						<li class="menu-item-top"><a href="#search" onclick="switchContent('search' ); return false;">Search</a></li>
-						<!-- <li><a href="#">Radio</a></li> -->
-						<li class="menu-item-top"><a href="#current" onclick="switchContent('current' ); return false;">Queue</a></li>
-						<!-- <li class="pure-menu-heading"><a href="#playlists" onclick="switchContent('playlists' ); return false;">Playlists</a></li> -->
-						<li class="menu-item-divided"><a href="#">Coding Times</a></li>
-						<li><a href="#">Bass Times</a></li>
-						<li><a href="#">Checkout Times</a></li>
-						<li><a href="#">Lo-fi Times</a></li>
-						<li><a href="#">Acid Times</a></li>
-					</ul>
-				</div>
-			</div>
-
-			<!-- Play Controls -->
-			<div id="player" data-role="header" data-tap-toggle="false" data-position="fixed">
-				<div id="songinfo" class="pure-g-r songinfo">
-					<a href="#controlsmodal" data-position-to="window" data-rel="popup"> 
-						<div id="infocoverdiv" class="albumcover"><img id="infocover" src="images/james-blake.png" width="60" height="60"></img></div>
-						<div class="songname"><a href="#">The Wilhelm Scream</a></div>
-						<div class="separator">-</div>
-						<div class="artistname"><a href="#">James Blake</a></div>
-					</a>
-				</div>
-
-				<!-- Play pause volume -->
-				<div id="controlsdiv" class="pure-g-r controls">
-					<!-- <span id="btback">
-						<a href="#" onclick="return backbt();"><img  id="backimg"src="images/icons/arrow_left_alt1_24x24.png" /></a>
-					</span> -->
-					<span id="btprev" class="previous">
-						<a href="#" onclick="doPrevious(); return false"><img id="previmg" src="images/icons/first_24x24.png" alt="Previous Track" /></a>
-					</span>
-					<span id="btplay" class="play">
-						<a href="#" onclick="doPlay(); return false"><img src="images/icons/pause_32x32.png" alt="Play" id="playimg" /></a>
-					</span>
-					<span id="btnext" class="next">
-						<a href="#" onclick="doNext(); return false"><img id="nextimg" src="images/icons/last_24x24.png" alt="Next Track" /></a>
-					</span>
-					<span class="volume">
-						<a href="#" onclick="doMute(); return false;"><img id="mutebt" src="images/icons/volume_16x12.png" alt="" /></a>
-						<label for="volumeslider">Volume</label>
-						<!-- <input id="volumeslider" name="volumeslider" data-mini="true" type="range" min="0" value="0" max="100" onchange="doVolume(this.value);" /> -->
-					</span>
-				</div>
-
-				<!-- Scrubbing slider -->
-				<div id="slidercontainer" class="pure-u">
-					<span id="songelapsed" class="pull-left"> 0:00 </span>
-					<span id="songlength" class="pull-right"> 0:00 </span>
-					<!-- <label for="trackslider"  class="ui-hidden-accessible">Position</label> -->
-					<!-- <input id="trackslider" name="trackslider" data-mini="true" type="range" onchange="doSeekPos(this.value);" /> -->
-				</div>
-
-				<!-- Extra Controls -->
-				<div id="extra roles" class="pure-u">
-					<p id="buttons">
-						<a href="#" onclick="doShuffle(); return false" title="Shuffle"><img src="images/icons/fork_21x24.png" id="shufflebt" alt="" /></a>
-						&nbsp; <a href="#" onclick="doRepeat(); return false"><img src="images/icons/loop_alt2_16x14.png" id="repeatbt" alt="" /></a>
-						<!-- &nbsp;<a href="#" onclick="doRandom(); return false"><img src="images/icons/loop_alt2_16x14.png" alt="" id="randombt" /></a> -->
-					</p>
-				</div>
-			</div>
-
-			<!-- Tracks Popup -->
-			<div data-role="popup" data-transition="none" data-theme="c" id="popupTracks">
-				<div data-role="collapsible-set">
-					<ul data-role="listview" data-icon="false" id="popupTracksLv">
-						<li>
-							<a href="#" onclick="return playTrack();">Play Track <span id="popupTrackName"></span></a>
-						</li>
-						<li id="liaddtobottom">
-							<a href="#" onclick="return playTrack(true);">Add tracks to bottom of queue</a>
-						</li>
-						<li>
-							<a href="#" onclick="showAlbumPopup()">Show Album <span id="popupAlbumName"></span></a>
-						</li>
-						<li id="popupArtistsLi">
-							<a href="#" onclick="showArtist()" id="popupArtistHref">Show Artist <span id="popupArtistName"></span>
-							</a>
-						</li>
-						<div data-role="collapsible" data-icon="false" data-inset="false" id="popupArtistsDiv">
-							<h2>Artists</h2>
-							<ul data-icon="false" data-inset="false" data-role="listview" id="popupArtistsLv"></ul>
-						</div>
-					</ul>
-				</div>
-			</div>
-
-			<!-- Playlist Pane -->
-			<div data-role="content" id="playlistspane" class="pane pure-u content">
-				<h4>Playlists</h4>
-				<div class="ui-block-a scroll" id="playlistslistdiv">
-					<ul id="playlistslist" class="table"></ul>
-				</div>
-				<div class="ui-block-b scroll" id="playlisttracksdiv">
-					<ul class="table" id="playlisttracks"></ul>
-				</div>
-			</div>
-
-			<!-- Queue Pane -->
-			<div data-role="content" id="currentpane" class="pane pure-u content">
-				<h4>Queue</h4>
-				<ul  class="table" id="currenttable"></ul>
-			</div>
-
-			<!-- Album Pane -->
-			<div data-role="content" id="albumspane" class="pane pure-u content">
-				<h4>Album</h4>
-				<a href="#coverpopup" data-position-to="window" data-rel="popup"><img height="90" src="" id="albumviewcover" /></a>
-				<h3 id="h_albumname"></h3>
-				<h5 id="h_albumartist"></h5>
-				<ul class="table" id="albumstable"></ul>
-			</div>
-
-			<!-- Artist Pane -->
-			<div data-role="content" id="artistspane" class="pane pure-u content">
-				<h4>Artist</h4>
-				<a href="#artistpopup" data-position-to="window" data-rel="popup"><img height="90" src="" id="artistviewimage" /></a>
-				<h3 id="h_artistname"></h3>
-				<ul class="table" id="artiststable"></ul>
-			</div>
-
-			<!-- Search -->
-			<div data-role="content" id="searchpane" class="pane pure-u content" >
-				<div>
-					<form>
-					<input id="searchinput" class="span2" data-clear-btn="true" onkeypress="return searchPressed(event.keyCode);" id="appendedInputButton" type="text" />
-					<button class="btn" type="button" onclick="return initSearch(event.value);" >
-						Search!
-					</button>
-					</form>
-				</div>
-				<div id="searchresults">
-					<div class="ui-grid-a srch-breakpoint">
-						<div class="ui-block-a" id="searchartists">
-							<h4>Artists</h4>
-							<ul class="table" id="artistresulttable"></ul>
-						</div>
-						<div class="ui-block-b" id="searchalbums">
-							<h4>Albums</h4>
-							<ul class="table" id="albumresulttable"></ul>
-						</div>
-					</div>
-					<div class="" id="searchtracks">
-						<h4>Tracks</h4>
-						<ul id="trackresulttable"  class="table"></ul>
+				<!-- Page Nav-->
+				<div id="menu" class="menu pure-u">
+					<div class="pure-menu pure-menu-open pure-menu-custom">
+						<!-- <a href="#nav" class="pure-menu-heading">Yumi</a> -->
+						<ul>
+							<li class="menu-item-top"><a href="#search" onclick="switchContent('search' ); return false;">Search</a></li>
+							<li><a href="#">Radio</a></li>
+							<li class="menu-item-top"><a href="#current" onclick="switchContent('current' ); return false;">Queue</a></li>
+							<!-- <li class="pure-menu-heading"><a href="#playlists" onclick="switchContent('playlists' ); return false;">Playlists</a></li> -->
+							<li class="menu-item-divided"><a href="#">Coding Times</a></li>
+							<li><a href="#">Bass Times</a></li>
+							<li><a href="#">Checkout Times</a></li>
+							<li><a href="#">Lo-fi Times</a></li>
+							<li><a href="#">Acid Times</a></li>
+							<li class="add_playlist"><a href="#"><img src="images/sidemenu/add_playlist.png"></a></li>
+						</ul>
 					</div>
 				</div>
 			</div>
+
+			<!-- Bottom Bar -->
+			<div class="pure-u bottom-bar">
+				<!-- Play Controls -->
+				<div id="player" class="player">
+					<div id="songinfo" class="pure-g-r songinfo">
+						<a href="#controlsmodal"> 
+							<div id="infocoverdiv" class="albumcover"><img id="infocover" src="images/james-blake.png" width="60" height="60"></img></div>
+							<div class="songname"><a href="#">The Wilhelm Scream</a></div>
+							<div class="separator">-</div>
+							<div class="artistname"><a href="#">James Blake</a></div>
+						</a>
+					</div>
+
+					<!-- Play pause volume -->
+					<div id="controlsdiv" class="pure-g-r controls">
+						<!-- <span id="btback">
+							<a href="#" onclick="return backbt();"><img  id="backimg"src="images/icons/arrow_left_alt1_24x24.png" /></a>
+						</span> -->
+						<span id="btprev" class="previous">
+							<a href="#" onclick="doPrevious(); return false"><img id="previmg" src="images/icons/first_24x24.png" alt="Previous Track" /></a>
+						</span>
+						<span id="btplay" class="play">
+							<a href="#" onclick="doPlay(); return false"><img src="images/icons/pause_32x32.png" alt="Play" id="playimg" /></a>
+						</span>
+						<span id="btnext" class="next">
+							<a href="#" onclick="doNext(); return false"><img id="nextimg" src="images/icons/last_24x24.png" alt="Next Track" /></a>
+						</span>
+						<span class="volume">
+							<a href="#" onclick="doMute(); return false;"><img id="mutebt" src="images/icons/volume_16x12.png" alt="" /></a>
+							<label for="volumeslider">Volume</label>
+							<!-- <input id="volumeslider" name="volumeslider" data-mini="true" type="range" min="0" value="0" max="100" onchange="doVolume(this.value);" /> -->
+						</span>
+					</div>
+
+					<!-- Scrubbing slider -->
+					<div id="slidercontainer" class="pure-u">
+						<span id="songelapsed" class="pull-left"> 0:00 </span>
+						<span id="songlength" class="pull-right"> 0:00 </span>
+						<!-- <label for="trackslider"  class="ui-hidden-accessible">Position</label> -->
+						<!-- <input id="trackslider" name="trackslider" data-mini="true" type="range" onchange="doSeekPos(this.value);" /> -->
+					</div>
+
+					<!-- Extra Controls -->
+					<div id="extra roles" class="pure-u">
+						<p id="buttons">
+							<a href="#" onclick="doShuffle(); return false" title="Shuffle"><img src="images/icons/fork_21x24.png" id="shufflebt" alt="" /></a>
+							&nbsp; <a href="#" onclick="doRepeat(); return false"><img src="images/icons/loop_alt2_16x14.png" id="repeatbt" alt="" /></a>
+							<!-- &nbsp;<a href="#" onclick="doRandom(); return false"><img src="images/icons/loop_alt2_16x14.png" alt="" id="randombt" /></a> -->
+						</p>
+					</div>
+				</div>
+			</div>
+			
+			<div class="pure-u main">
+				<div class="pure-g-r">
+					<input type="search">
+					<input type="submit" class="submit" value="&nbsp;">
+				</div>
+				<div class="pure-g-r">
+					<div class="pure-u">
+						<table class="pure-table">
+						<thead>
+						<tr>
+							<th>Track</th>
+							<th>Artist</th>
+							<th>Time</th>
+							<th>Album</th>
+						</tr>
+						</thead>
+
+						<tbody>
+						<tr>
+						<td>1</td>
+						<td>Honda</td>
+						<td>Accord</td>
+						<td>2009</td>
+						</tr>
+
+						<tr>
+						<td>2</td>
+						<td>Toyota</td>
+						<td>Camry</td>
+						<td>2012</td>
+						</tr>
+
+						<tr>
+						<td>3</td>
+						<td>Hyundai</td>
+						<td>Elantra</td>
+						<td>2010</td>
+						</tr>
+						</tbody>
+						</table>
+					</div>
+				</div>
+
+
+				<!-- <div class="pure-g-r">
+					<div class="pure-u-1-4 album">
+						<img class="album-art" src="images/main/albumart.png" alt="Album Art" />
+						<div class="pure-g-r">
+							<div class="pure-u">
+								<span class="album-name">The Rip Tide</span>
+								<span class="album-artist">Beirut</span>
+								<img class="album-artist-image" src="images/james-blake.png" />
+							</div>
+						</div>
+					</div>
+					<div class="pure-u-1-4 album">
+						<img class="album-art" src="images/main/albumart.png" alt="Album Art" />
+						<div class="pure-g-r">
+							<div class="pure-u">
+								<span class="album-name">The Rip Tide</span>
+								<span class="album-artist">Beirut</span>
+								<img class="album-artist-image" src="images/james-blake.png" />
+							</div>
+						</div>
+					</div>
+
+					<div class="pure-u-1-4 album">
+						<img class="album-art" src="images/main/albumart.png" alt="Album Art" />
+						<div class="pure-g-r">
+							<div class="pure-u">
+								<span class="album-name">The Rip Tide</span>
+								<span class="album-artist">Beirut</span>
+								<img class="album-artist-image" src="images/james-blake.png" />
+							</div>
+						</div>
+					</div>
+
+					<div class="pure-u-1-4 album">
+						<img class="album-art" src="images/main/albumart.png" alt="Album Art" />
+						<div class="pure-g-r">
+							<div class="pure-u">
+								<span class="album-name">The Rip Tide</span>
+								<span class="album-artist">Beirut</span>
+								<img class="album-artist-image" src="images/james-blake.png" />
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="pure-g-r">
+					<div class="pure-u-1-4 album">
+						<img class="album-art" src="images/main/albumart.png" alt="Album Art" />
+						<div class="pure-g-r">
+							<div class="pure-u">
+								<span class="album-name">The Rip Tide</span>
+								<span class="album-artist">Beirut</span>
+								<img class="album-artist-image" src="images/james-blake.png" />
+							</div>
+						</div>
+					</div>
+					<div class="pure-u-1-4 album">
+						<img class="album-art" src="images/main/albumart.png" alt="Album Art" />
+						<div class="pure-g-r">
+							<div class="pure-u">
+								<span class="album-name">The Rip Tide</span>
+								<span class="album-artist">Beirut</span>
+								<img class="album-artist-image" src="images/james-blake.png" />
+							</div>
+						</div>
+					</div>
+
+					<div class="pure-u-1-4 album">
+						<img class="album-art" src="images/main/albumart.png" alt="Album Art" />
+						<div class="pure-g-r">
+							<div class="pure-u">
+								<span class="album-name">The Rip Tide</span>
+								<span class="album-artist">Beirut</span>
+								<img class="album-artist-image" src="images/james-blake.png" />
+							</div>
+						</div>
+					</div>
+
+					<div class="pure-u-1-4 album">
+						<img class="album-art" src="images/main/albumart.png" alt="Album Art" />
+						<div class="pure-g-r">
+							<div class="pure-u">
+								<span class="album-name">The Rip Tide</span>
+								<span class="album-artist">Beirut</span>
+								<img class="album-artist-image" src="images/james-blake.png" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div> -->
+
+
+
+
 		</div>
 
 		<!-- Javscripts -->
 		<script src="js/jquery-1.8.3.js"></script>
-		<script src="js/toys.js"></script>
-		<script type='application/javascript' src='js/fastclick.js'></script> 
-		<script src="js/jquery.mobile-1.3.0.js"></script>
-		<script src="js/mobile.js"></script>
-
 		<script type="text/javascript" src="/mopidy/mopidy.js"></script>
-		<script type="text/javascript" src="js/iscroll-lite.js"></script>
-		<script src="js/jquery.truncate.min.js"></script>
+		<script src="js/toys.js"></script>
+
+		
 		<script src="js/controls.js"></script>
 		<script src="js/library.js"></script>
 		<script src="js/functionsvars.js"></script>
 		<script src="js/process_ws.js"></script>
-
-		<!-- Use lastfm -->
-		<script type="text/javascript" src="js/lastfm.api.md5.js"></script>
-		<script type="text/javascript" src="js/lastfm.api.js"></script>
-		<script type="text/javascript" src="js/lastfm.api.cache.js"></script>
-		<script src="js/lastfm.js"></script>
 
 		<!-- GUI -->
 		<script src="js/gui.js"></script>

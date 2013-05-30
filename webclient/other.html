@@ -1,0 +1,87 @@
+
+			<!-- Tracks Popup -->
+			<div data-role="popup" data-transition="none" data-theme="c" id="popupTracks">
+				<div data-role="collapsible-set">
+					<ul data-role="listview" data-icon="false" id="popupTracksLv">
+						<li>
+							<a href="#" onclick="return playTrack();">Play Track <span id="popupTrackName"></span></a>
+						</li>
+						<li id="liaddtobottom">
+							<a href="#" onclick="return playTrack(true);">Add tracks to bottom of queue</a>
+						</li>
+						<li>
+							<a href="#" onclick="showAlbumPopup()">Show Album <span id="popupAlbumName"></span></a>
+						</li>
+						<li id="popupArtistsLi">
+							<a href="#" onclick="showArtist()" id="popupArtistHref">Show Artist <span id="popupArtistName"></span>
+							</a>
+						</li>
+						<div data-role="collapsible" data-icon="false" data-inset="false" id="popupArtistsDiv">
+							<h2>Artists</h2>
+							<ul data-icon="false" data-inset="false" data-role="listview" id="popupArtistsLv"></ul>
+						</div>
+					</ul>
+				</div>
+			</div>
+
+			<!-- Playlist Pane -->
+			<div data-role="content" id="playlistspane" class="pane pure-u content">
+				<h4>Playlists</h4>
+				<div class="ui-block-a scroll" id="playlistslistdiv">
+					<ul id="playlistslist" class="table"></ul>
+				</div>
+				<div class="ui-block-b scroll" id="playlisttracksdiv">
+					<ul class="table" id="playlisttracks"></ul>
+				</div>
+			</div>
+
+			<!-- Queue Pane -->
+			<div data-role="content" id="currentpane" class="pane pure-u content">
+				<h4>Queue</h4>
+				<ul  class="table" id="currenttable"></ul>
+			</div>
+
+			<!-- Album Pane -->
+			<div data-role="content" id="albumspane" class="pane pure-u content">
+				<h4>Album</h4>
+				<a href="#coverpopup" data-position-to="window" data-rel="popup"><img height="90" src="" id="albumviewcover" /></a>
+				<h3 id="h_albumname"></h3>
+				<h5 id="h_albumartist"></h5>
+				<ul class="table" id="albumstable"></ul>
+			</div>
+
+			<!-- Artist Pane -->
+			<div data-role="content" id="artistspane" class="pane pure-u content">
+				<h4>Artist</h4>
+				<a href="#artistpopup" data-position-to="window" data-rel="popup"><img height="90" src="" id="artistviewimage" /></a>
+				<h3 id="h_artistname"></h3>
+				<ul class="table" id="artiststable"></ul>
+			</div>
+
+			<!-- Search -->
+			<div data-role="content" id="searchpane" class="pane pure-u content" >
+				<div>
+					<form>
+					<input id="searchinput" class="span2" data-clear-btn="true" onkeypress="return searchPressed(event.keyCode);" id="appendedInputButton" type="text" />
+					<button class="btn" type="button" onclick="return initSearch(event.value);" >
+						Search!
+					</button>
+					</form>
+				</div>
+				<div id="searchresults">
+					<div class="ui-grid-a srch-breakpoint">
+						<div class="ui-block-a" id="searchartists">
+							<h4>Artists</h4>
+							<ul class="table" id="artistresulttable"></ul>
+						</div>
+						<div class="ui-block-b" id="searchalbums">
+							<h4>Albums</h4>
+							<ul class="table" id="albumresulttable"></ul>
+						</div>
+					</div>
+					<div class="" id="searchtracks">
+						<h4>Tracks</h4>
+						<ul id="trackresulttable"  class="table"></ul>
+					</div>
+				</div>
+			</div>
