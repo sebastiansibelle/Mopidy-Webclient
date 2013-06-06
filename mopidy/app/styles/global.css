@@ -4,7 +4,7 @@ body {
 }
 
 /* Add transition to containers so they can push in and out */
-#layout, #menu, .pure-menu-link {
+.layout, #menu, .pure-menu-link {
 	-webkit-transition: all 0.2s ease-out;
 	-moz-transition: all 0.2s ease-out;
 	-ms-transition: all 0.2s ease-out;
@@ -38,33 +38,5 @@ dt {
 dd {
 	margin: 0 0 10px 0;
 }
-
-/* --------------------------
- * Layout Styles
- * --------------------------
-*/
-
-#layout {
-	padding-left: 190px; /* left col width "#menu" */
-	left: 0;
-}
-
-/* Apply the .box class on the immediate parent of any grid element (pure-u-*) to apply some padding. */
-.l-box {
-	padding: 1.3em;
-}
-
-.l-vbox {
-	padding: 1.3em 0;
-}
-
-.l-hbox {
-	padding: 0 1.3em;
-}
-
-.l-centered {
-	text-align: center;
-}
-
 
 

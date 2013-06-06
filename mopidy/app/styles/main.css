@@ -2,10 +2,6 @@
  * Main Styles
  *---------------------------
  **/
-#main {
-	width: 100%;
-}
-
 .main{
 	position: relative;
 	padding: 40px;
@@ -13,7 +9,8 @@
 	height: 100%;
 	margin-top: -20px;
 	display: block;
-
+	margin-left: 190px; /* left col width "#menu" */
+	left: 0;
 }
 
 .main input[type=search]{
