@@ -1,3 +1,15 @@
 .queue{
+	height: 100%;
+	position: fixed;
+	display: block;
 	border-left: 1px solid #ccc;
+}
+
+.queue .pure-table{
+	border: none;
+}
+.queue .pure-table thead{
+	background: #14171b;
+	color: #fff;
+	border-color: #14171b;
 }

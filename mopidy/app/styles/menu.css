@@ -4,17 +4,17 @@
 */
 
 #menu {
-	margin-left: -190px; /* "#menu" width */
-	width: 190px;
-	position: fixed;
+	/*margin-left: -190px; /* "#menu" width */*/
+	/*position: fixed;*/
 	top: 0;
-	left: 190px;
+	/*left: 190px;*/
 	bottom: 0;
 	z-index: 1000; /* so the menu or its navicon stays above all content */
 	background: #141619;
 	overflow-y: auto;
 	-webkit-overflow-scroll: touch;
 }
+
 #menu a {
 	font-size:80%;
 	color: #fff;

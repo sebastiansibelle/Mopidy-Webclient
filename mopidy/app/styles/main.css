@@ -4,13 +4,8 @@
  **/
 .main{
 	position: relative;
-	padding: 40px;
-	width: 100%;
-	height: 100%;
-	margin-top: -20px;
 	display: block;
-	margin-left: 190px; /* left col width "#menu" */
-	left: 0;
+	padding: 40px;
 }
 
 .main input[type=search]{
