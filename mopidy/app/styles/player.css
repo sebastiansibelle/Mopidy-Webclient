@@ -1,0 +1,83 @@
+/* --------------
+ * Player Styles
+ * ---------------
+ */
+
+#player{
+	position: fixed;
+	bottom: 0;
+	background: #111;
+	opacity: 0.97;
+	width: 100%;
+	padding: 25px;
+	z-index: 2000;
+	left: 0px;
+}
+
+#player .songinfo .albumcover{
+	width: 60px;
+	height: 60px;
+	background: #333;
+	border-radius: 3px;
+	display: inline;
+	float: left;
+}
+
+#player .songinfo .albumcover img{
+	border-radius: 3px;
+}
+
+#player .songinfo .separator,
+#player .songinfo .songname,
+#player .songinfo .artistname{
+	display: inline;
+	float: left;
+}
+
+#player .songinfo .songname{
+	margin-left: 20px;
+}
+
+#player .songinfo .songname a{
+	color: #fff;
+	font-size: 75%;
+	display: inline;
+	float: left;
+	letter-spacing: 1px;
+}
+
+#player .songinfo .artistname a{
+	color: #aaa;
+	font-size: 75%;
+	display: inline;
+	float: left;
+	letter-spacing: 1px;
+}
+
+#player .songinfo .artistname a:hover,
+#player .songinfo .songname a:hover {
+	color: #4EB9EF;
+	cursor: pointer;
+}
+
+#player .songinfo .separator{
+	color: #aaa;
+	padding:0px 10px;
+	line-height: 90%
+}
+
+#player .controls{
+	margin-left: 60px;
+	margin-top: 25px;
+}
+
+#player .controls span{
+	display: inline;
+	float: left;
+	padding-left: 20px;
+}
+
+#player .controls span.previous,
+#player .controls span.next{
+	padding-top: 4px;
+}

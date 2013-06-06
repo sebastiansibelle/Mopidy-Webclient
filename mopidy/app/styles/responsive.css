@@ -1,0 +1,85 @@
+/* --------------------------
+ * Responsive Styles
+ * --------------------------
+*/
+@media (max-width: 870px) {
+
+	/* Navigation Push Styles */
+	#layout {
+		position: relative;
+		padding-left: 0;
+	}
+		#layout.active {
+			position: relative;
+			left: 190px;
+		}
+
+			#layout.active #menu {
+				left: 190px;
+				width: 190px;
+			}
+
+	#menu {
+		left: 0;
+	}
+
+	.pure-menu-link {
+		position: fixed;
+		left: 0;
+		display: block;
+	}
+
+	#layout.active .pure-menu-link {
+		left: 190px;
+	}
+}
+
+@media (max-width: 767px) {
+
+	.content {
+		width: 95%;
+		font-size: 90%;
+	}
+
+	.legal-links {
+		padding:1em 0;
+	}
+	.legal-license, .legal-copyright, .legal-links, .legal-links li {
+		text-align: center;
+	}
+
+	/* normalize paddings on small screens*/
+	.l-hbox {
+		padding: 1.3em;
+	}
+}
+
+p {
+	line-height: 1.6em;
+}
+
+@media (max-width: 767px) {
+	.hero {
+		margin: 2em 0 1.5em;
+		padding: 0.6em;
+	}
+		.hero h1 {
+			font-size: 250%;
+			font-weight: 300; /* slightly thicker to compensate for font-size */
+		}
+		.hero h2 {
+			font-size: 165%;
+		}
+
+	/* by default l-hbox becomes padding: 1.3em; at <= 767px. However, this makes the heading
+	too far away from the content, so adding this in here. */
+	h3.l-hbox,
+	p.l-hbox {
+		padding: 0 1.3em;
+	}
+
+	a.size-chart-label {
+		font-size: 0.75em;
+		padding: 0.6667em;
+	}
+}

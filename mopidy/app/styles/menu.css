@@ -1,0 +1,92 @@
+/* --------------------------
+ * Main Navigation Bar Styles
+ * --------------------------
+*/
+
+#menu {
+	margin-left: -190px; /* "#menu" width */
+	width: 190px;
+	position: fixed;
+	top: 0;
+	left: 190px;
+	bottom: 0;
+	z-index: 1000; /* so the menu or its navicon stays above all content */
+	background: #141619;
+	overflow-y: auto;
+	-webkit-overflow-scroll: touch;
+}
+#menu a {
+	font-size:80%;
+	color: #fff;
+	border: none;
+	white-space: normal;
+	padding-left: 25px;
+	font-weight: 100;
+}
+
+#menu .pure-menu-open {
+	background: transparent;
+	border: 0;
+}
+
+#menu .pure-menu ul {
+	border: none;
+	background: transparent;
+	margin-top: 30px;
+}
+
+#menu .pure-menu .menu-item-divided {
+	padding-top: 20px;
+	margin-top: 20px;
+	border-top: 1px solid #333;
+}
+
+#menu .pure-menu li a:hover {
+	background: #141619;
+	color: #4EB9EF;
+}
+
+.pure-menu-link {
+	display: none; /* show this only on small screens */
+	top: 0;
+	left: 190px; /* "#menu width" */
+	background: #000;
+	background: rgba(0,0,0,0.7);
+	padding: 0.75em 1em;
+}
+
+.pure-menu-link:hover {
+	background: #000;
+}
+
+#menu .pure-menu-heading {
+	font-size:110%;
+	color: #fff;
+}
+
+#menu .pure-menu-selected {
+	background: #1f8dd6;
+}
+
+#menu .pure-menu-selected a {
+	color: white;
+}
+
+#menu li.pure-menu-selected a:hover {
+	background: none;
+}
+
+#menu .menu-item-top a{
+	font-weight: 400;
+}
+
+
+#menu .add_playlist{
+	margin:	0 auto;
+}
+
+#menu .add_playlist a{
+	margin: 0 auto;
+	display: block;
+	text-align: center;
+}

@@ -1,0 +1,52 @@
+<!-- Bottom Bar -->
+<div class="pure-u bottom-bar">
+	<!-- Play Controls -->
+	<div id="player" class="player">
+		<div id="songinfo" class="pure-g-r songinfo">
+			<a href="#controlsmodal"> 
+				<div id="infocoverdiv" class="albumcover"><img id="infocover" src="images/james-blake.png" width="60" height="60"></img></div>
+				<div class="songname"><a href="#">The Wilhelm Scream</a></div>
+				<div class="separator">-</div>
+				<div class="artistname"><a href="#">James Blake</a></div>
+			</a>
+		</div>
+
+		<!-- Play pause volume -->
+		<div id="controlsdiv" class="pure-g-r controls">
+			<!-- <span id="btback">
+				<a href="#" onclick="return backbt();"><img  id="backimg"src="images/icons/arrow_left_alt1_24x24.png" /></a>
+			</span> -->
+			<span id="btprev" class="previous">
+				<a href="#" onclick="doPrevious(); return false"><img id="previmg" src="images/icons/first_24x24.png" alt="Previous Track" /></a>
+			</span>
+			<span id="btplay" class="play">
+				<a href="#" onclick="doPlay(); return false"><img src="images/icons/pause_32x32.png" alt="Play" id="playimg" /></a>
+			</span>
+			<span id="btnext" class="next">
+				<a href="#" onclick="doNext(); return false"><img id="nextimg" src="images/icons/last_24x24.png" alt="Next Track" /></a>
+			</span>
+			<span class="volume">
+				<a href="#" onclick="doMute(); return false;"><img id="mutebt" src="images/icons/volume_16x12.png" alt="" /></a>
+				<label for="volumeslider">Volume</label>
+				<!-- <input id="volumeslider" name="volumeslider" data-mini="true" type="range" min="0" value="0" max="100" onchange="doVolume(this.value);" /> -->
+			</span>
+		</div>
+
+		<!-- Scrubbing slider -->
+		<div id="slidercontainer" class="pure-u">
+			<span id="songelapsed" class="pull-left"> 0:00 </span>
+			<span id="songlength" class="pull-right"> 0:00 </span>
+			<!-- <label for="trackslider"  class="ui-hidden-accessible">Position</label> -->
+			<!-- <input id="trackslider" name="trackslider" data-mini="true" type="range" onchange="doSeekPos(this.value);" /> -->
+		</div>
+
+		<!-- Extra Controls -->
+		<div id="extra roles" class="pure-u">
+			<p id="buttons">
+				<a href="#" onclick="doShuffle(); return false" title="Shuffle"><img src="images/icons/fork_21x24.png" id="shufflebt" alt="" /></a>
+				&nbsp; <a href="#" onclick="doRepeat(); return false"><img src="images/icons/loop_alt2_16x14.png" id="repeatbt" alt="" /></a>
+				<!-- &nbsp;<a href="#" onclick="doRandom(); return false"><img src="images/icons/loop_alt2_16x14.png" alt="" id="randombt" /></a> -->
+			</p>
+		</div>
+	</div>
+</div>

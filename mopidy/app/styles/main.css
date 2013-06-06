@@ -1,0 +1,77 @@
+/* ---------------------------
+ * Main Styles
+ *---------------------------
+ **/
+#main {
+	width: 100%;
+}
+
+.main{
+	position: relative;
+	padding: 40px;
+	width: 100%;
+	height: 100%;
+	margin-top: -20px;
+	display: block;
+
+}
+
+.main input[type=search]{
+	border: 2px solid #ccc;
+	border-radius: 3px;
+	height: 30px;
+	padding-left: 5px;
+}
+
+
+.main input[type=search]:hover{
+	border: 2px solid #aaa;
+}
+
+.main input[type=search]:focus{
+	border: 2px solid #27ae60;
+	outline: none;
+}
+
+.main input[type=submit]{
+	border: none;
+	background: #fff url(../images/main/search.png) no-repeat center;
+	position: relative;
+	left: 190px;
+	top: -30px;
+	display: block;
+	width: 20px;
+	height: 25px;
+}
+
+.main .album{}
+.main .album .album-art{
+	width: 194px; 
+	float: left; 
+	position: relative; 
+	display: block;
+	border-radius: 3px;
+}
+
+.main .album .album-name,
+.main .album .album-artist-image,
+.main .album .album-artist{
+	display: inline;
+	float: left;
+}
+
+.main .album .album-name{
+	color: #000;
+	margin-top: 20px;
+}
+
+.main .album .album-artist{
+	margin-top: 40px
+}
+
+.main .album .album-artist-image{
+	width: 40px;
+	margin-top: 20px;
+	text-align: right;
+	border-radius: 1px;
+}
