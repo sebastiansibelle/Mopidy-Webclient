@@ -37,8 +37,14 @@
 }
 
 .main .album{}
+
+.main .album .details{
+	float: left;
+	padding-top: 5px;
+}
+
 .main .album .album-art{
-	width: 194px; 
+	width: 150px; 
 	float: left; 
 	position: relative; 
 	display: block;
@@ -48,22 +54,21 @@
 .main .album .album-name,
 .main .album .album-artist-image,
 .main .album .album-artist{
-	display: inline;
-	float: left;
+	display: block;
 }
 
 .main .album .album-name{
 	color: #000;
-	margin-top: 20px;
 }
 
 .main .album .album-artist{
-	margin-top: 40px
 }
 
+/* This is gross and I need chins help to make it better*/
 .main .album .album-artist-image{
-	width: 40px;
-	margin-top: 20px;
-	text-align: right;
-	border-radius: 1px;
+	width: 30px;
+	border-radius: 2px;
+	position: relative;
+	left: 120px;
+	top: -35px;
 }

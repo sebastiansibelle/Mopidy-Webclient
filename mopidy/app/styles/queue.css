@@ -11,5 +11,17 @@
 .queue .pure-table thead{
 	background: #14171b;
 	color: #fff;
+	opacity: 0.9;
 	border-color: #14171b;
 }
+
+.queue .pure-table thead th{
+	font-weight: 300;
+	font-size: 16px;
+}
+
+.queue .pure-table tbody tr:nth-child(even){
+	background-color: #eee;
+	border-bottom: solid 1px #ccc;
+}
+

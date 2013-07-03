@@ -4,14 +4,15 @@
 */
 
 #menu {
-	/*margin-left: -190px; /* "#menu" width */*/
-	/*position: fixed;*/
-	top: 0;
+	/*margin-left: -190px; /* "#menu" width */
 	/*left: 190px;*/
+	width: 180px;
 	bottom: 0;
+	top: 0;
 	z-index: 1000; /* so the menu or its navicon stays above all content */
 	background: #141619;
 	overflow-y: auto;
+	position: fixed;
 	-webkit-overflow-scroll: touch;
 }
 
