@@ -1,0 +1,12 @@
+<section class="main" ng-controller="searchController">
+	<div class="pure-g-r">
+		<div class="pure-u">
+			<form ng-submit="search()">
+				<input type="search" ng-model="query" placeholder="Search">
+				<input type="submit" class="submit" value="&nbsp;">
+			</form>
+		</div>
+	</div>
+
+	<div ng-include="'views/test_results.html'"></div> 
+</section>

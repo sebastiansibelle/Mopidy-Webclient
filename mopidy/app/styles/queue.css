@@ -7,6 +7,7 @@
 
 .queue .pure-table{
 	border: none;
+	overflow-y: scroll;
 }
 .queue .pure-table thead{
 	background: #14171b;
@@ -16,8 +17,14 @@
 }
 
 .queue .pure-table thead th{
-	font-weight: 300;
-	font-size: 16px;
+	font-weight: 400;
+	font-size: 12px;
+	padding: 12px 12px;
+	text-transform: uppercase;
+}
+
+.queue .pure-table tbody td{
+	font-size: 12px;
 }
 
 .queue .pure-table tbody tr:nth-child(even){

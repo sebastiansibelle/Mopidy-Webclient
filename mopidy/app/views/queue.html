@@ -1,8 +1,9 @@
 <!-- Page Navigation -->
-<aside class="queue">
+<aside class="queue" ng-controller="queueController">
 	<table class="pure-table">
 		<thead>
 			<tr>
+				<th>
 				<th>Track</th>
 				<th>Artist</th>
 				<th>Time</th>
@@ -10,45 +11,12 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td>Made To Stray</td>
-				<td>Mount Kimbie</td>
-				<td>4:47</td>
-				<td>Cold Spring Fault Less Youth</td>
-			</tr>
-
-			<tr>
-				<td>Unluck</td>
-				<td>James Blake</td>
-				<td>3:01</td>
-				<td>James Blake</td>
-			</tr>
-
-			<tr>
-				<td>Quest</td>
-				<td>Nosaj Thing</td>
-				<td>1:37</td>
-				<td>Drift</td>
-			</tr>
-
-			<tr>
-				<td>Quest</td>
-				<td>Nosaj Thing</td>
-				<td>1:37</td>
-				<td>Drift</td>
-			</tr>
-
-			<tr>
-				<td>Quest</td>
-				<td>Nosaj Thing</td>
-				<td>1:37</td>
-				<td>Drift</td>
-			</tr>
-			<tr>
-				<td>Quest</td>
-				<td>Nosaj Thing</td>
-				<td>1:37</td>
-				<td>Drift</td>
+			<tr ng-repeat="(i, track) in tracklist" ng-click="addToPlaylist(track)">
+				<td>{{ track.track_no }}</td>
+				<td>{{ track.name }}</td>
+				<td>{{ track.artists[0].name }}</td>
+				<td>{{ track.length | date: 'm:ss' }}</td>
+				<td>{{ track.album.name }}</td>
 			</tr>
 		</tbody>
 	</table>
