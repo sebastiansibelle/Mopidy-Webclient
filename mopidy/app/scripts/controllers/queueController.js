@@ -7,6 +7,7 @@ angular.module('mopidyApp').controller('queueController',
 				console.log('Track changed');
 			}, consoleError);
 		};
+
 		var showTracklist  = function() {
 			mopidy.tracklist.getTracks().then(function(data) {
 				console.log($tracklist.updateTracks(data, 'queueController::showTracklist'));
@@ -32,7 +33,7 @@ angular.module('mopidyApp').controller('queueController',
 				showTracklist();
 			}, consoleError);
 		};
-
+		
 		$scope.$on('updateTracklist', function() {
 			console.log('queueController received broadcast [updateTracklist]');
 			$scope.tracklist = $tracklist.tracks;

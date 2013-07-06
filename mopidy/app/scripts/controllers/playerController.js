@@ -60,7 +60,7 @@ angular.module('mopidyApp').controller('playerController',
 
 		$scope.showTracklist = function() {
 			mopidy.tracklist.getTracks().then(function(data) {
-				console.log($tracklist.updateTracks(data, 'playbackController::showTracklist'));
+				console.log($tracklist.updateTracks(data, 'player::showTracklist'));
 			});
 		};
 

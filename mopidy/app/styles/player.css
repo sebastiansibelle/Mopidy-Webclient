@@ -71,13 +71,21 @@
 	margin-top: 25px;
 }
 
-#player .controls span{
+#player .controls li{
 	display: inline;
 	float: left;
+	list-style: none;
 	padding-left: 20px;
 }
 
-#player .controls span.previous,
-#player .controls span.next{
-	padding-top: 4px;
+#player #progress{
+	margin-left: 20px;
+	margin-top: 6px;
+	float: left;
+}
+
+
+#player .controls li #previous img,
+#player .controls li #next img{
+	margin-top: 4px;
 }

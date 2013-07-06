@@ -1,35 +1,36 @@
 <!-- Bottom Bar -->
 <section class="pure-u bottom-bar">
 	<!-- Play Controls -->
-	<div id="player" class="player">
+	<div id="player" class="player" ng-controller="playerController">
 		<div id="songinfo" class="pure-g-r songinfo">
 			<a href="#controlsmodal"> 
 				<div id="infocoverdiv" class="albumcover"><img id="infocover" src="images/james-blake.png" width="60" height="60"></img></div>
-				<div class="songname"><a href="#">The Wilhelm Scream</a></div>
+				<div class="songname"><a href="#">{{ currentTrack.name }}</a></div>
 				<div class="separator">-</div>
-				<div class="artistname"><a href="#">James Blake</a></div>
+				<div class="artistname"><a href="#">{{ currentTrack.artists[0].name }}</a></div>
 			</a>
 		</div>
 
 		<!-- Play pause volume -->
 		<div id="controlsdiv" class="pure-g-r controls">
-			<!-- <span id="btback">
-				<a href="#" onclick="return backbt();"><img  id="backimg"src="images/icons/arrow_left_alt1_24x24.png" /></a>
-			</span> -->
-			<span id="btprev" class="previous">
-				<a href="#" onclick="doPrevious(); return false"><img id="previmg" src="images/icons/first_24x24.png" alt="Previous Track" /></a>
-			</span>
-			<span id="btplay" class="play">
-				<a href="#" onclick="doPlay(); return false"><img src="images/icons/pause_32x32.png" alt="Play" id="playimg" /></a>
-			</span>
-			<span id="btnext" class="next">
-				<a href="#" onclick="doNext(); return false"><img id="nextimg" src="images/icons/last_24x24.png" alt="Next Track" /></a>
-			</span>
-			<span class="volume">
+			<!-- <li>
+				<a id="stop" ng-click="stop()" ng-hide="state == 'stopped'"><img  id="backimg"src="images/icons/arrow_left_alt1_24x24.png" /></a>
+			</li> -->
+			<li><a id="previous" ng-click="previous()"><img id="previmg" src="images/icons/first_24x24.png" alt="Previous Track" /></a></li>
+			<li><a id="play" ng-click="play()" ng-hide="state == 'playing'"><img src="images/icons/play_32x32.png" alt="Play" id="playimg" /></a>
+			</li>
+			<li><a id="pause" ng-click="pause()" ng-show="state == 'playing'"><img src="images/icons/pause_32x32.png" alt="Play" id="playimg" /></a></li>
+			<li><a id="next" ng-click="next()"><img id="nextimg" src="images/icons/last_24x24.png" alt="Next Track" /></a></li>
+
+			<span>
 				<!-- <a href="#" onclick="doMute(); return false;"><img id="mutebt" src="images/icons/volume_16x12.png" alt="" /></a>
 				<label for="volumeslider">Volume</label>
 				 --><!-- <input id="volumeslider" name="volumeslider" data-mini="true" type="range" min="0" value="0" max="100" onchange="doVolume(this.value);" /> -->
 			</span>
+		</div>
+
+		<div id="progress">
+			{{ currentProgress }} / {{ progressToTime(currentTrack.length) }}
 		</div>
 
 		<!-- Scrubbing slider -->

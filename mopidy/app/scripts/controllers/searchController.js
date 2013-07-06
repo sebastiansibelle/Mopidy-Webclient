@@ -5,7 +5,7 @@ angular.module('mopidyApp').controller('searchController',
 		// Set the result of the search quuery
 		function setResult(result) {
 			$scope.result = result;
-			$tracklist.updateTracks(result.tracks, 'searchController::setResult');
+			// $tracklist.updateTracks(result.tracks, 'searchController::setResult');
 			$scope.$apply();
 			return result;
 		};
@@ -29,6 +29,13 @@ angular.module('mopidyApp').controller('searchController',
 			mopidy.library.lookup(uri).then(function(data) {
 				console.log($tracklist.updateTracks(data, 'searchController::setTracklistAlbum'));
 			});
+		};
+
+		$scope.setTracklistTrack = function(uri) {
+			mopidy.library.lookup(uri).then(function(data) {
+				console.log($tracklist.updateTracks(data, 'searchController::setTracklistTrack'));
+			});
+			mopidy.playback.play();
 		};
 
 		$scope.setTracklistArtist = function(artist_name) {
@@ -57,12 +64,6 @@ angular.module('mopidyApp').controller('searchController',
 					}
 				});
 			}
-		};
-
-		$scope.setTracklistAlbum = function(uri) {
-			mopidy.library.lookup(uri).then(function(data) {
-				console.log($tracklist.updateTracks(data, 'searchController::setTracklistAlbum'));
-			});
 		};
 
 		$scope.$on('updateTracklistArtist', function(event, tracks) {
