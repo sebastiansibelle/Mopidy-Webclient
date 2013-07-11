@@ -4,13 +4,14 @@ angular.module('mopidyApp').controller('tracklistController',
 	function ($scope, $tracklist) {
 		var changeTlTrack = function(tl_track) {
 			mopidy.playback.changeTrack(tl_track).then(function() {
-				console.log('Track changed');
 			}, consoleError);
 		};
 
 		var showTracklist  = function() {
 			mopidy.tracklist.getTracks().then(function(data) {
-				console.log($tracklist.updateTracks(data, 'queueController::showTracklist'));
+				console.log('Behold the magical tracklist');
+				console.log(data);
+				$tracklist.updateTracks(data, 'tracklistController::showTracklist');
 			});
 		};
 
@@ -20,7 +21,7 @@ angular.module('mopidyApp').controller('tracklistController',
 
 		$scope.resetTracklist = function(tracks) {
 			mopidy.tracklist.clear().then(function() {
-				// TODO: Replace hack to remove $$hashKey from tracks
+				// TODO: Replace hack (angular.fromJson(angular.toJson) to remove $$hashKey from tracks
 				mopidy.tracklist.add(angular.fromJson(angular.toJson(tracks[0]))).then(function() {
 					console.log('Tracklist sent');
 					mopidy.playback.play();
@@ -34,8 +35,13 @@ angular.module('mopidyApp').controller('tracklistController',
 			}, consoleError);
 		};
 		
+		mopidy.on('state:online', function() {
+			showTracklist();
+		});	
+
+
 		$scope.$on('updateTracklist', function() {
-			console.log('queueController received broadcast [updateTracklist]');
+			console.log('tracklistController received broadcast [updateTracklist]');
 			$scope.tracklist = $tracklist.tracks;
 			$scope.$apply();
 		});

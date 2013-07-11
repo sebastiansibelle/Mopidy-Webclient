@@ -12,6 +12,15 @@ body {
 	transition: all 0.2s ease-out;
 }
 
+
+/*
+ * Z-indexes
+ */
+.queue{ z-index: 1000; }
+#menu{ z-index: 1000; }
+#player{ z-index: 3000; }
+
+
 /* --------------------------
  * Element Styles
  * --------------------------

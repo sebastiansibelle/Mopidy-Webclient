@@ -11,7 +11,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="(i, track) in tracklist" ng-click="addToPlaylist(track)">
+			<tr ng-repeat="(i, track) in tracklist" ng-click="changeTrack(track)">
 				<td>{{ track.track_no }}</td>
 				<td>{{ track.name }}</td>
 				<td>{{ track.artists[0].name }}</td>

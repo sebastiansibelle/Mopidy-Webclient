@@ -2,12 +2,16 @@
 	height: 100%;
 	position: fixed;
 	display: block;
+	width: 400px;
+	top: 0;
+	right: 0;
 	border-left: 1px solid #ccc;
 }
 
 .queue .pure-table{
 	border: none;
 	overflow-y: scroll;
+	width: 100%;
 }
 .queue .pure-table thead{
 	background: #14171b;
@@ -16,16 +20,19 @@
 	border-color: #14171b;
 }
 
-.queue .pure-table thead th{
+.queue .pure-table thead tr th{
 	font-weight: 400;
 	font-size: 12px;
 	padding: 12px 12px;
 	text-transform: uppercase;
+	letter-spacing: 1px;
 }
 
-.queue .pure-table tbody td{
+.queue .pure-table tbody tr td{
 	font-size: 12px;
+	letter-spacing: 1px;
 }
+
 
 .queue .pure-table tbody tr:nth-child(even){
 	background-color: #eee;

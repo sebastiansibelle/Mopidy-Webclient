@@ -19,14 +19,14 @@ app.factory('$tracklist', function($rootScope) {
 	return $tracklist;
 });
 
-app.factory('$plackback', function($rootScope) {
+app.factory('$playback', function($rootScope) {
 	var $playback;
 
 	$playback.state = '';
 
 	$playback.updateState = function(state, initiator) {
 		this.state = state;
-		this.broadcat(initiator);
+		this.broadcast(initiator);
 		return this.state;
 	};
 
@@ -36,4 +36,24 @@ app.factory('$plackback', function($rootScope) {
 	};
 
 	return $playback;
+});
+
+
+app.factory('$playlists', function($rootScope) {
+	var $playlists = [];
+
+	$playlists.updatePlaylists = function(playlists, initiator) {
+		console.log('Update them playlists');
+
+		this.playlists = playlists;
+		this.broadcast(initiator);
+		return this.playlists;
+	};
+
+	$playlists.broadcast = function(initiator) {
+		console.log('$playlists broadcasting [updateState] from', initiator);
+		$rootScope.$broadcast('updatePlaylists');
+	};
+
+	return $playlists;
 });

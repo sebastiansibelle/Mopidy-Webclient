@@ -6,6 +6,8 @@
 	position: relative;
 	display: block;
 	padding: 40px;
+	height: 600px;
+	overflow-y: scroll;
 }
 
 .main input[type=search]{
@@ -34,6 +36,16 @@
 	display: block;
 	width: 20px;
 	height: 25px;
+}
+
+
+
+
+.main .results .result_type{
+	float: left;
+	position: relative;
+	width: 48%;
+	margin-right: 2%;
 }
 
 .main .album{}

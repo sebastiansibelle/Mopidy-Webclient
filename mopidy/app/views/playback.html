@@ -30,6 +30,10 @@
 		</div>
 
 		<div id="progress">
+			<div id="progress-outer">
+				<div id="progress-inner" style="width: {{progressPercentage()}}%">
+			</div>
+			</div>
 			{{ currentProgress }} / {{ progressToTime(currentTrack.length) }}
 		</div>
 

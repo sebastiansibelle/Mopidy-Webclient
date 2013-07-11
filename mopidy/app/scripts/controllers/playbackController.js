@@ -4,7 +4,7 @@ angular.module('mopidyApp').controller('playbackController',
 	function ($scope, $tracklist) {
 		$scope.progressToTime = function(progress) {
 			progress = progress / 1000;
-			var m = Math.floor(progress /60);
+			var m = Math.floor(progress / 60);
 			var s = Math.floor(progress % 60);
 			if ( s < 10 ) {
 				s = '0'+s;
@@ -13,6 +13,7 @@ angular.module('mopidyApp').controller('playbackController',
 		};
 
 		var setCurrentProgress = function(progress) {
+			$scope.currentProgressInt = progress;
 			$scope.currentProgress = $scope.progressToTime(progress);
 			$scope.$apply();
 			return $scope.currentProgress;
@@ -21,7 +22,7 @@ angular.module('mopidyApp').controller('playbackController',
 		var int = window.setInterval(function() {
 			if ( online && $scope.state == 'playing' ) {
 				mopidy.playback.getTimePosition().then(function(data) {
-					console.log(setCurrentProgress(data));
+					setCurrentProgress(data);
 				});
 			}
 		}, 1000);
@@ -36,6 +37,10 @@ angular.module('mopidyApp').controller('playbackController',
 			$scope.state = new_state;
 			$scope.$apply();
 			return new_state;
+		};
+
+		$scope.progressPercentage = function() {
+			return online && $scope.currentTrack ? $scope.currentProgressInt / $scope.currentTrack.length * 100 : 0;
 		};
 
 		$scope.next = function() {

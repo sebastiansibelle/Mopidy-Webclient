@@ -8,17 +8,14 @@
 	<div id="menu">
 		<div class="pure-menu pure-menu-open pure-menu-custom">
 			<!-- <a href="#nav" class="pure-menu-heading">Yumi</a> -->
-			<ul>
-				<li class="menu-item-top"><a href="#search" onclick="switchContent('search' ); return false;">Search</a></li>
+			<ul ng-controller="playlistController">
+				<li class="menu-item-top"><a href="#search">Search</a></li>
 				<!-- <li><a href="#">Radio</a></li> -->
 				<!-- <li class="menu-item-top"><a href="#current" onclick="switchContent('current' ); return false;">Queue</a></li> -->
 				<!-- <li class="pure-menu-heading"><a href="#playlists" onclick="switchContent('playlists' ); return false;">Playlists</a></li> -->
-				<!-- <li class="add_playlist menu-item-divided"><a href="#"><img src="images/sidemenu/add_playlist.png"></a></li>
-				<li ><a href="#">Coding Times</a></li>
-				<li><a href="#">Bass Times</a></li>
-				<li><a href="#">Checkout Times</a></li>
-				<li><a href="#">Lo-fi Times</a></li>
-				<li><a href="#">Acid Times</a></li> -->
+				<li class="add_playlist menu-item-divided"><a ng-click="createPlaylist()"><img src="images/sidemenu/add_playlist.png"></a></li>
+
+				<li ng-repeat="playlist in playlists"><a href="{{playlist.uri}}">{{playlist.name}}</a></li>
 			</ul>
 		</div>
 	</div>

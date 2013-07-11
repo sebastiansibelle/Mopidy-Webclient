@@ -18,9 +18,11 @@ var online = false;
 mopidy.on(console.log.bind(console));
 mopidy.on('state:online', function() {
 	online = true;
+
 });
 
 var consoleError = console.error.bind(console);
+
 var mkTlTrack = function(track) {
 	delete track['$$hashKey'];
 	var tl_track = {
