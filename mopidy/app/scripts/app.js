@@ -5,7 +5,7 @@ var app = angular.module('mopidyApp', [])
 		$routeProvider
 			.when('/', {
 				templateUrl: 'views/main.html',
-				controller: 'searchController'
+				controller: 'libraryController'
 			})
 		.otherwise({
 			redirectTo: '/'

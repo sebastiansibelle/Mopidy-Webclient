@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mopidyApp').controller('playerController',
+angular.module('mopidyApp').controller('playbackController',
 	function ($scope, $tracklist) {
 		$scope.progressToTime = function(progress) {
 			progress = progress / 1000;

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mopidyApp').controller('searchController',
+angular.module('mopidyApp').controller('libraryController',
 	function ($scope, $tracklist) {
 		// Set the result of the search quuery
 		function setResult(result) {

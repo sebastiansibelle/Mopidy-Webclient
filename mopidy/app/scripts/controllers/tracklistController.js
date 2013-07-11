@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mopidyApp').controller('queueController',
+angular.module('mopidyApp').controller('tracklistController',
 	function ($scope, $tracklist) {
 		var changeTlTrack = function(tl_track) {
 			mopidy.playback.changeTrack(tl_track).then(function() {
